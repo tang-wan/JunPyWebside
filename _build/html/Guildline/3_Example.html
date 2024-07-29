@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example &mdash; JunPy Webside  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Input reference" href="4_InputReference.html" />
+    <link rel="prev" title="Tutorial" href="2_Tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            JunPy Webside
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guildlines:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tight-binding-model">Tight-Binding model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code">Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#result">Result</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#co-bda-co-smmj">Co/BDA/Co SMMJ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Result</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_InputReference.html">Input reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/5_Theorem.html">Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/6_ContactUs.html">Contact us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/7_Forum.html">Forum</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">JunPy Webside</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Guildline/3_Example.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example">
+<h1>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h1>
+<section id="tight-binding-model">
+<h2>Tight-Binding model<a class="headerlink" href="#tight-binding-model" title="Link to this heading"></a></h2>
+<section id="code">
+<h3>Code<a class="headerlink" href="#code" title="Link to this heading"></a></h3>
+<ul>
+<li><p>This code is building device:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">junpy.factory.tb</span> <span class="k">as</span> <span class="nn">tb</span>
+
+<span class="c1">#================================================</span>
+
+<span class="k">def</span> <span class="nf">build_device</span><span class="p">(</span><span class="n">bias</span><span class="p">,</span> <span class="n">yL</span><span class="o">=</span><span class="mf">0.</span> <span class="n">yR</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+    <span class="c1"># bias</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">bias</span>
+    <span class="n">dV</span> <span class="o">=</span> <span class="p">(</span><span class="n">V</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>
+
+    <span class="c1"># layer</span>
+    <span class="n">lL</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">Lead</span>    <span class="p">(</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yLm</span> <span class="n">bias</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">300</span> <span class="p">)</span>
+    <span class="n">Bl</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">Barrier</span> <span class="p">(</span> <span class="mf">5.4</span><span class="p">,</span> <span class="mf">5.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">biasList</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">*</span><span class="n">dV</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">dV</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">dV</span><span class="p">,</span> <span class="n">V</span><span class="p">]</span> <span class="p">)</span>
+
+    <span class="c1"># coupling</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mat</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">]])</span>
+
+    <span class="c1"># build device</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">build_tbDevies</span><span class="p">(</span> <span class="p">[</span><span class="n">lL</span><span class="p">,</span> <span class="n">Bl</span><span class="p">,</span> <span class="n">lR</span><span class="p">],</span> <span class="p">[</span><span class="n">C</span><span class="p">,</span> <span class="n">C</span><span class="p">]</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">device</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/TBDevice.png" src="../_images/TBDevice.png" />
+</figure>
+<ul>
+<li><p>This code is building calculation and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">junpy.factory.tb</span> <span class="k">as</span> <span class="nn">tb</span>
+<span class="kn">from</span> <span class="nn">junpy</span> <span class="kn">import</span> <span class="n">jlab</span>
+
+<span class="n">biasList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.6</span><span class="o">.</span> <span class="mi">13</span><span class="p">)</span>
+
+<span class="c1"># 1. setup device</span>
+<span class="kn">from</span> <span class="nn">device</span> <span class="kn">import</span> <span class="n">build_device</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">buildMethod</span> <span class="o">=</span> <span class="s1">&#39;tb_list&#39;</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">deviceList</span> <span class="o">=</span> <span class="p">[</span><span class="n">build_device</span><span class="p">(</span><span class="n">bias</span><span class="p">,</span> <span class="n">yL</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">bias</span> <span class="ow">in</span> <span class="n">biasList</span><span class="p">]</span>
+
+<span class="c1"># 2. setup calculate</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">calculation</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ivcurve&#39;</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">calculation</span><span class="o">.</span><span class="n">ivcurve</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;keldysh&#39;</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">calculation</span><span class="o">.</span><span class="n">ivcurve</span><span class="o">.</span><span class="n">sites</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">calculation</span><span class="o">.</span><span class="n">ivcurve</span><span class="o">.</span><span class="n">kspaceNumberList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mf">15.</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">calculation</span><span class="o">.</span><span class="n">ivcurve</span><span class="o">.</span><span class="n">energyInterval</span> <span class="o">=</span> <span class="mf">1e-2</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">calculation</span><span class="o">.</span><span class="n">ivcurve</span><span class="o">.</span><span class="n">methodOfEnergyIntegration</span> <span class="o">=</span> <span class="s1">&#39;trapz&#39;</span>
+
+<span class="c1"># 3. start calculation</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>Sub the job:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mptirun<span class="w"> </span>-np<span class="w"> </span><span class="m">2</span><span class="w"> </span>python3<span class="w"> </span>./<span class="w"> </span>ivcurve.py
+</pre></div>
+</div>
+</section>
+<section id="result">
+<h3>Result<a class="headerlink" href="#result" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="../_images/TBResult.png" src="../_images/TBResult.png" />
+</figure>
+</section>
+</section>
+<section id="co-bda-co-smmj">
+<h2>Co/BDA/Co SMMJ<a class="headerlink" href="#co-bda-co-smmj" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Code<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul>
+<li><p>This code combine building device, setup calculate and start calculation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">from</span> <span class="nn">junpy</span> <span class="kn">import</span> <span class="n">jlab</span>
+
+<span class="c1"># 1. setup device</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;nanodcal&#39;</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">nanodcalObjectFile</span> <span class="o">=</span> <span class="s1">&#39;../data/FM/JunpyObject.mat&#39;</span>
+
+<span class="c1"># 2. setup calculate</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">calculation</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;transmission&#39;</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">calculation</span><span class="o">.</span><span class="n">transmission</span><span class="o">.</span><span class="n">energyInterval</span> <span class="o">=</span> <span class="mf">5e-3</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">calculation</span><span class="o">.</span><span class="n">transmission</span><span class="o">.</span><span class="n">energyRange</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># 3. start calculation</span>
+<span class="n">jlab</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/SMMJDevice.png" src="../_images/SMMJDevice.png" />
+</figure>
+</section>
+<section id="id2">
+<h3>Result<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="../_images/SMMJResult.png" src="../_images/SMMJResult.png" />
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="2_Tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="4_InputReference.html" class="btn btn-neutral float-right" title="Input reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, tangtang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
