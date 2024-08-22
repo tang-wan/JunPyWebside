@@ -22,7 +22,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
-    'myst-nb',
+    'myst_nb',
 ]
 nb_execution_mode = 'off'
 
