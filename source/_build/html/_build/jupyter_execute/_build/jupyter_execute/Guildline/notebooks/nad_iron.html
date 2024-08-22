@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iron metal (3D bulk) &mdash; JunPy Webside 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../../index.html" class="icon icon-home">
+            JunPy Webside
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guildlines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Guildline/1_Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Guildline/2_Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Guildline/3_Example.html">Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Guildline/4_InputReference.html">Input reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Appendix/5_Theorem.html">Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Appendix/6_ContactUs.html">Contact us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Appendix/7_Forum.html">Forum</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">JunPy Webside</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Iron metal (3D bulk)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../../_sources/_build/jupyter_execute/_build/jupyter_execute/Guildline/notebooks/nad_iron.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="iron-metal-3d-bulk">
+<h1>Iron metal (3D bulk)<a class="headerlink" href="#iron-metal-3d-bulk" title="Link to this heading"></a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">junpy</span> <span class="k">as</span> <span class="nn">jp</span>
+<span class="kn">import</span> <span class="nn">jpdataset</span>
+<span class="kn">from</span> <span class="nn">junpy.factory</span> <span class="kn">import</span> <span class="n">nanodcal</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="n">jpdataset</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s1">&#39;nanodcal/bulk_iron/LDA_SP/bcc_primitive_1x1x1/NanodcalStructObject.mat&#39;</span><span class="p">)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">nanodcal</span><span class="o">.</span><span class="n">load_nanodcal_device</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calcr</span> <span class="o">=</span> <span class="n">jp</span><span class="o">.</span><span class="n">BulkBandStructure</span><span class="p">(</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">kpoints</span><span class="o">=</span><span class="n">jp</span><span class="o">.</span><span class="n">BandPathKspaceSampling2</span><span class="p">(</span>
+        <span class="n">paths</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">],</span>
+        <span class="n">points_per_path</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">special_points</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;G&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span>   <span class="p">,</span> <span class="mi">0</span>   <span class="p">,</span> <span class="mi">0</span>   <span class="p">],</span>
+            <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span> <span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span> <span class="p">],</span>
+            <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span>   <span class="p">,</span> <span class="mi">0</span>   <span class="p">,</span> <span class="mf">0.5</span> <span class="p">],</span>
+            <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">),</span>
+    <span class="n">fermiEnergy</span><span class="o">=</span><span class="n">device</span><span class="o">.</span><span class="n">hsdata</span><span class="o">.</span><span class="n">fermiEnergy</span><span class="p">,</span>
+    <span class="n">is_projected</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">jp</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">calcr</span><span class="p">,</span> <span class="n">savefile</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JunPy version---------------------------: 0.15.0.post29+ga5b3260
+Parallelization information
+    BLAS Vendor-----------------------------: MKL
+    Total number of MPI processes-----------: 1
+    OMP_NUM_THREADS-------------------------: 1
+    MKL_NUM_THREADS-------------------------: unset
+    OPENBLAS_NUM_THREADS--------------------: unset
+Calculating bulk band structure... (2024-08-08 15:39:06)
+    Device information
+        numberOfSites---------------------------: 1
+        spinType--------------------------------: SpinType.CollinearSpin
+    K-space sampling
+        samplingName----------------------------: BandPathKspaceSampling2
+        paths-----------------------------------: [&#39;G&#39;, &#39;H&#39;, &#39;N&#39;, &#39;G&#39;, &#39;P&#39;, &#39;H&#39;, &#39;P&#39;, &#39;N&#39;]
+        points_per_path-------------------------: 20
+        numReducedKpoints-----------------------: 141
+    Runtime message
+        Calculate over k-space...
+            Start MPI execution...
+            --&gt;   5.7% finished (Elapsed time: 0:00:00.021135)
+            --&gt;  10.6% finished (Elapsed time: 0:00:00.041222)
+            --&gt;  15.6% finished (Elapsed time: 0:00:00.021408)
+            --&gt;  20.6% finished (Elapsed time: 0:00:00.039988)
+            --&gt;  25.5% finished (Elapsed time: 0:00:00.017097)
+            --&gt;  30.5% finished (Elapsed time: 0:00:00.014557)
+            --&gt;  35.5% finished (Elapsed time: 0:00:00.015629)
+            --&gt;  40.4% finished (Elapsed time: 0:00:00.012504)
+            --&gt;  45.4% finished (Elapsed time: 0:00:00.013106)
+            --&gt;  50.4% finished (Elapsed time: 0:00:00.016479)
+            --&gt;  55.3% finished (Elapsed time: 0:00:00.013165)
+            --&gt;  60.3% finished (Elapsed time: 0:00:00.012381)
+            --&gt;  65.2% finished (Elapsed time: 0:00:00.013476)
+            --&gt;  70.2% finished (Elapsed time: 0:00:00.013420)
+            --&gt;  75.2% finished (Elapsed time: 0:00:00.012112)
+            --&gt;  80.1% finished (Elapsed time: 0:00:00.017071)
+            --&gt;  85.1% finished (Elapsed time: 0:00:00.014310)
+            --&gt;  90.1% finished (Elapsed time: 0:00:00.011432)
+            --&gt;  95.0% finished (Elapsed time: 0:00:00.072198)
+            --&gt; 100.0% finished (Elapsed time: 0:00:00.015494)
+            Wait for other processes...
+            --&gt; finished (Elapsed time: 0:00:00.000025)
+            Gather results from other processes...
+            --&gt; finished (Elapsed time: 0:00:00.001451)
+        The energy bands entirely outside the range (-inf, inf) will be removed
+            Number of bands processed---------------: 15
+            Number of bands kept--------------------: 15
+            Number of bands removed-----------------: 0
+            Subset of bands kept--------------------: (0, 14)
+Calculation of bulk band structure finished (2024-08-08 15:39:07)
+Elapsed time----------------------------: 0:00:00.628510
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calcr</span><span class="o">.</span><span class="n">kspaceSampling</span><span class="o">.</span><span class="n">reducedKpoints</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calcr</span><span class="o">.</span><span class="n">band_energies</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(141, 3)
+(141, 15, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bp</span> <span class="o">=</span> <span class="n">jp</span><span class="o">.</span><span class="n">BandStructurePlotter</span><span class="p">(</span>
+    <span class="n">kpoints</span><span class="o">=</span><span class="n">calcr</span><span class="o">.</span><span class="n">kspaceSampling</span><span class="o">.</span><span class="n">reducedKpoints</span><span class="p">,</span>
+    <span class="n">special_points_indices</span><span class="o">=</span><span class="n">calcr</span><span class="o">.</span><span class="n">kpoints</span><span class="o">.</span><span class="n">special_points_indices</span><span class="p">,</span>
+    <span class="n">energies</span><span class="o">=</span><span class="n">calcr</span><span class="o">.</span><span class="n">band_energies</span><span class="p">()[:,:,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">weights</span> <span class="o">=</span>  <span class="n">calcr</span><span class="o">.</span><span class="n">spin_weights_pauli</span><span class="p">(),</span>
+    <span class="c1">#weights=np.c_[calcr.atom_weights()[:,0,:], calcr.atom_weights()[:,0,:]],</span>
+    <span class="c1">#weights=np.array([</span>
+    <span class="c1">#    sw_x,</span>
+    <span class="c1">#    sw_y,</span>
+    <span class="c1">#    sw_z,</span>
+    <span class="c1">#    aw_FM,</span>
+    <span class="c1">#    aw_TMD,</span>
+    <span class="c1">#    aw_FMTMD,</span>
+    <span class="c1">#]),</span>
+<span class="p">)</span>
+
+<span class="n">bp</span><span class="o">.</span><span class="n">create_data</span><span class="p">(</span><span class="n">interpolation</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sx&#39;</span><span class="p">)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">plot_band_energies</span><span class="p">(</span><span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+<span class="c1">#bp.plot_projection_scatter(proj_id=0, norm=colors.Normalize(-1, 1), alpha=1, s=20)</span>
+<span class="n">bp</span><span class="o">.</span><span class="n">plot_special_points_xaxis</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c1">#plt.ylim(-10, 10)</span>
+<span class="c1">#plt.savefig(&#39;fig_Sx&#39;, dpi=150)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f8f39f1f070&gt;
+</pre></div>
+</div>
+<img alt="../../../../../../_images/e0b23099389b60011f0fa6b010f59b83d5bcbecceac89a89474cdcec550b401d.png" src="../../../../../../_images/e0b23099389b60011f0fa6b010f59b83d5bcbecceac89a89474cdcec550b401d.png" />
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, tangtang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

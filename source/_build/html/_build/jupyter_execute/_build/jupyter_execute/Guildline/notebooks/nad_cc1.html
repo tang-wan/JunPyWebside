@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carbon Chain (Part 1) &mdash; JunPy Webside 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../../index.html" class="icon icon-home">
+            JunPy Webside
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guildlines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Guildline/1_Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Guildline/2_Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Guildline/3_Example.html">Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Guildline/4_InputReference.html">Input reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Appendix/5_Theorem.html">Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Appendix/6_ContactUs.html">Contact us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../Appendix/7_Forum.html">Forum</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">JunPy Webside</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Carbon Chain (Part 1)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../../_sources/_build/jupyter_execute/_build/jupyter_execute/Guildline/notebooks/nad_cc1.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="carbon-chain-part-1">
+<h1>Carbon Chain (Part 1)<a class="headerlink" href="#carbon-chain-part-1" title="Link to this heading"></a></h1>
+<p>This example demonstrates the calculations of density of states (DOS) and transmission values for a two-probe carbon chain.</p>
+<section id="import-necessary-libraries">
+<h2>Import Necessary Libraries<a class="headerlink" href="#import-necessary-libraries" title="Link to this heading"></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">junpy</span> <span class="k">as</span> <span class="nn">jp</span>
+<span class="kn">from</span> <span class="nn">junpy.factory</span> <span class="kn">import</span> <span class="n">nanodcal</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_formats = [&#39;svg&#39;]
+<span class="o">%</span><span class="k">config</span> InlineBackend.rc = {&#39;font.size&#39;: 12}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-device">
+<h2>Load Device<a class="headerlink" href="#load-device" title="Link to this heading"></a></h2>
+<p>We use the <code class="docutils literal notranslate"><span class="pre">nanodcal.load_nanodcal_device</span></code> function to load the structures and Hamiltonians from the results of Nanodcal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s1">&#39;jpdataset/nanodcal/twoprobe_carbon_chain/&#39;</span>
+    <span class="s1">&#39;LDA_SP_dC-3.0-ang/sys_6C-vac5ang-6C/v0.00/NanodcalStructObject.mat&#39;</span><span class="p">)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">nanodcal</span><span class="o">.</span><span class="n">load_nanodcal_device</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-density-of-states">
+<h2>Calculate Density of States<a class="headerlink" href="#calculate-density-of-states" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">jp.DensityOfStates</span></code> class is used to contruct a DOS calculation. We set the <code class="docutils literal notranslate"><span class="pre">device</span></code> parameter to input the loaded nanodcal object. <code class="docutils literal notranslate"><span class="pre">energies</span></code> specifies the energies points to be computed. <code class="docutils literal notranslate"><span class="pre">etaSigma</span></code> and <code class="docutils literal notranslate"><span class="pre">etaGF</span></code> set the infinitesimal imaginay number for the electrode self-energy and central Green’s function, respectively. Next, we use <code class="docutils literal notranslate"><span class="pre">jp.run</span></code> to start the calculation. Users can set the value of <code class="docutils literal notranslate"><span class="pre">savefile</span></code> to save the results, which can be loaded via the <code class="docutils literal notranslate"><span class="pre">jp.load</span></code> function.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calcr_dos</span> <span class="o">=</span> <span class="n">jp</span><span class="o">.</span><span class="n">DensityOfStates</span><span class="p">(</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">energies</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">101</span><span class="p">),</span>
+    <span class="n">etaSigma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">etaGF</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">jp</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">calcr_dos</span><span class="p">,</span> <span class="n">savefile</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JunPy version---------------------------: 0.15.0.post29+ga5b3260
+Parallelization information
+    BLAS Vendor-----------------------------: MKL
+    Total number of MPI processes-----------: 1
+    OMP_NUM_THREADS-------------------------: 1
+    MKL_NUM_THREADS-------------------------: unset
+    OPENBLAS_NUM_THREADS--------------------: unset
+Calculating density of states... (2024-08-15 20:26:10)
+    Device information
+        bias (mu2-mu1)--------------------------: 0.0
+        central.numberOfSites-------------------: 12
+        central.spinType------------------------: SpinType.CollinearSpin
+        lead1.numberOfSites---------------------: 3
+        lead1.spinType--------------------------: SpinType.CollinearSpin
+        lead1.direction-------------------------: -3
+        lead1.temperature-----------------------: 0.0
+        lead1.chemicalPotential-----------------: -0.0
+        lead2.numberOfSites---------------------: 3
+        lead2.spinType--------------------------: SpinType.CollinearSpin
+        lead2.direction-------------------------: -3
+        lead2.temperature-----------------------: 0.0
+        lead2.chemicalPotential-----------------: -0.0
+    Energy sampling
+        samplingName----------------------------: CustomSampling
+        range-----------------------------------: [-4.0000e+00, 6.0000e+00]
+        number----------------------------------: 101
+    K-space sampling
+        samplingName----------------------------: GammaKspaceSampling
+        numReducedKpoints-----------------------: 1
+    Runtime message
+        Integrate over energy and k-space...
+            Start MPI execution...
+            --&gt;   5.9% finished (Elapsed time: 0:00:00.157780)
+            --&gt;  10.9% finished (Elapsed time: 0:00:00.098970)
+            --&gt;  15.8% finished (Elapsed time: 0:00:00.103462)
+            --&gt;  20.8% finished (Elapsed time: 0:00:00.107473)
+            --&gt;  25.7% finished (Elapsed time: 0:00:00.124568)
+            --&gt;  30.7% finished (Elapsed time: 0:00:00.148198)
+            --&gt;  35.6% finished (Elapsed time: 0:00:00.155703)
+            --&gt;  40.6% finished (Elapsed time: 0:00:00.245130)
+            --&gt;  45.5% finished (Elapsed time: 0:00:00.164388)
+            --&gt;  50.5% finished (Elapsed time: 0:00:00.164172)
+            --&gt;  55.4% finished (Elapsed time: 0:00:00.173248)
+            --&gt;  60.4% finished (Elapsed time: 0:00:00.196932)
+            --&gt;  65.3% finished (Elapsed time: 0:00:00.176232)
+            --&gt;  70.3% finished (Elapsed time: 0:00:00.161262)
+            --&gt;  75.2% finished (Elapsed time: 0:00:00.167534)
+            --&gt;  80.2% finished (Elapsed time: 0:00:00.157482)
+            --&gt;  85.1% finished (Elapsed time: 0:00:00.126943)
+            --&gt;  90.1% finished (Elapsed time: 0:00:00.107382)
+            --&gt;  95.0% finished (Elapsed time: 0:00:00.112344)
+            --&gt; 100.0% finished (Elapsed time: 0:00:00.110355)
+            Wait for other processes...
+            --&gt; finished (Elapsed time: 0:00:00.000969)
+            Gather results from other processes...
+            --&gt; finished (Elapsed time: 0:00:00.001050)
+    Density of states report
+            Energy_eV          D_up          D_dn
+        -4.000000e+00  1.127021e-02  1.639869e-02
+        -3.900000e+00  1.171425e-02  1.505244e-02
+        -3.800000e+00  1.221406e-02  1.395156e-02
+        -3.700000e+00  1.277625e-02  1.304498e-02
+        -3.600000e+00  1.340886e-02  1.229498e-02
+        -3.500000e+00  1.412165e-02  1.167322e-02
+        -3.400000e+00  1.492656e-02  1.115805e-02
+        -3.300000e+00  1.583837e-02  1.073276e-02
+        -3.200000e+00  1.687544e-02  1.038434e-02
+        -3.100000e+00  1.806097e-02  1.010255e-02
+        -3.000000e+00  1.942461e-02  9.879335e-03
+        -2.900000e+00  2.100494e-02  9.708339e-03
+        -2.800000e+00  2.285314e-02  9.584567e-03
+        -2.700000e+00  2.503874e-02  9.504137e-03
+        -2.600000e+00  2.765894e-02  9.464091e-03
+        -2.500000e+00  3.085441e-02  9.462258e-03
+        -2.400000e+00  3.483763e-02  9.497155e-03
+        -2.300000e+00  3.994724e-02  9.567916e-03
+        -2.200000e+00  4.676125e-02  9.674247e-03
+        -2.100000e+00  5.635972e-02  9.816404e-03
+        -2.000000e+00  7.102755e-02  9.995192e-03
+        -1.900000e+00  9.656241e-02  1.021198e-02
+        -1.800000e+00  1.527801e-01  1.046874e-02
+        -1.700000e+00  3.666036e-01  1.076811e-02
+        -1.600000e+00  1.080420e+01  1.111347e-02
+        -1.500000e+00  7.382336e+00  1.150910e-02
+        -1.400000e+00  4.811470e+00  1.196031e-02
+        -1.300000e+00  4.347782e+00  1.247368e-02
+        -1.200000e+00  4.229036e+00  1.305738e-02
+        -1.100000e+00  3.885855e+00  1.372157e-02
+        -1.000000e+00  3.466896e+00  1.447896e-02
+        -9.000000e-01  3.080558e+00  1.534567e-02
+        -8.000000e-01  3.359947e+00  1.634234e-02
+        -7.000000e-01  3.996898e+00  1.749580e-02
+        -6.000000e-01  1.068751e+01  1.884167e-02
+        -5.000000e-01  4.103285e+01  2.042818e-02
+        -4.000000e-01  2.729543e+01  2.232256e-02
+        -3.000000e-01  2.465248e+01  2.462150e-02
+        -2.000000e-01  2.394359e+01  2.746968e-02
+        -1.000000e-01  2.723034e+01  3.109440e-02
+         0.000000e+00  4.198225e+01  3.587518e-02
+         1.000000e-01  6.173473e+01  4.249738e-02
+         2.000000e-01  5.084898e+00  5.233560e-02
+         3.000000e-01  3.664255e+00  6.858646e-02
+         4.000000e-01  3.229684e+00  1.005915e-01
+         5.000000e-01  3.003310e+00  1.898167e-01
+         6.000000e-01  3.171835e+00  1.001302e+00
+         7.000000e-01  3.428784e+00  8.579854e+00
+         8.000000e-01  3.875359e+00  5.457506e+00
+         9.000000e-01  4.095121e+00  4.081743e+00
+         1.000000e+00  3.924991e+00  3.746982e+00
+         1.100000e+00  3.811351e+00  3.615943e+00
+         1.200000e+00  4.889778e+00  3.398703e+00
+         1.300000e+00  8.032514e+00  3.127002e+00
+         1.400000e+00  6.371544e+00  2.884156e+00
+         1.500000e+00  3.099948e-01  2.854206e+00
+         1.600000e+00  1.330055e-01  2.811669e+00
+         1.700000e+00  8.461705e-02  2.900643e+00
+         1.800000e+00  6.238306e-02  3.134286e+00
+         1.900000e+00  4.959117e-02  4.305620e+00
+         2.000000e+00  4.123443e-02  6.459996e+01
+         2.100000e+00  3.531526e-02  2.722599e+01
+         2.200000e+00  3.088445e-02  2.113562e+01
+         2.300000e+00  2.743347e-02  2.180168e+01
+         2.400000e+00  2.466486e-02  1.891568e+01
+         2.500000e+00  2.239253e-02  2.171674e+01
+         2.600000e+00  2.049371e-02  2.116281e+01
+         2.700000e+00  1.888388e-02  3.265226e+01
+         2.800000e+00  1.750276e-02  3.283530e+01
+         2.900000e+00  1.630609e-02  6.637641e+00
+         3.000000e+00  1.526056e-02  3.041749e+00
+         3.100000e+00  1.434060e-02  2.565953e+00
+         3.200000e+00  1.352617e-02  2.483527e+00
+         3.300000e+00  1.280138e-02  2.749144e+00
+         3.400000e+00  1.215340e-02  3.073155e+00
+         3.500000e+00  1.157179e-02  3.353360e+00
+         3.600000e+00  1.104796e-02  3.386515e+00
+         3.700000e+00  1.057474e-02  3.183820e+00
+         3.800000e+00  1.014615e-02  3.038609e+00
+         3.900000e+00  9.757130e-03  3.489639e+00
+         4.000000e+00  9.403365e-03  5.231762e+00
+         4.100000e+00  9.081178e-03  7.477820e+00
+         4.200000e+00  8.787404e-03  3.371269e+00
+         4.300000e+00  8.519308e-03  2.192419e-01
+         4.400000e+00  8.274517e-03  1.060757e-01
+         4.500000e+00  8.050964e-03  7.045838e-02
+         4.600000e+00  7.846843e-03  5.319246e-02
+         4.700000e+00  7.660571e-03  4.297442e-02
+         4.800000e+00  7.490755e-03  3.618328e-02
+         4.900000e+00  7.336172e-03  3.131745e-02
+         5.000000e+00  7.195740e-03  2.764516e-02
+         5.100000e+00  7.068507e-03  2.476743e-02
+         5.200000e+00  6.953630e-03  2.244791e-02
+         5.300000e+00  6.850366e-03  2.053728e-02
+         5.400000e+00  6.758058e-03  1.893631e-02
+         5.500000e+00  6.676129e-03  1.757628e-02
+         5.600000e+00  6.604071e-03  1.640793e-02
+         5.700000e+00  6.541440e-03  1.539497e-02
+         5.800000e+00  6.487852e-03  1.450996e-02
+         5.900000e+00  6.442972e-03  1.373179e-02
+         6.000000e+00  6.406518e-03  1.304389e-02
+Calculation of density of states finished (2024-08-15 20:26:14)
+Elapsed time----------------------------: 0:00:03.013240
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">[calcr].densityOfStates</span></code> function returns the calculated DOS values with the shape of <code class="docutils literal notranslate"><span class="pre">(#kpoints,</span> <span class="pre">#energies,</span> <span class="pre">#spin)</span></code>. Setting <code class="docutils literal notranslate"><span class="pre">spin='diag'</span></code> indicates that the function will return both spin-up and spin-down values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shape: (#kpoints, #energies, #spin)</span>
+<span class="n">dos</span> <span class="o">=</span> <span class="n">calcr_dos</span><span class="o">.</span><span class="n">densityOfStates</span><span class="p">(</span><span class="n">spin</span><span class="o">=</span><span class="s1">&#39;diag&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">calcr_dos</span><span class="o">.</span><span class="n">energies</span><span class="p">,</span> <span class="n">dos</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spin-up&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">calcr_dos</span><span class="o">.</span><span class="n">energies</span><span class="p">,</span> <span class="n">dos</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spin-down&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Energy (eV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;DOS (1/eV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../../_images/a87b632c77bad70a26fc5a551971a42ab6b0842120992aae2dd57546f6829ef4.svg" src="../../../../../../_images/a87b632c77bad70a26fc5a551971a42ab6b0842120992aae2dd57546f6829ef4.svg" />
+</div>
+</div>
+</section>
+<section id="calculate-transmission">
+<h2>Calculate Transmission<a class="headerlink" href="#calculate-transmission" title="Link to this heading"></a></h2>
+<p>Similar to the DOS calculation, we use <code class="docutils literal notranslate"><span class="pre">jp.Transmission</span></code> to construct the transmission calculation.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calcr_trans</span> <span class="o">=</span> <span class="n">jp</span><span class="o">.</span><span class="n">Transmission</span><span class="p">(</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">energies</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">101</span><span class="p">),</span>
+    <span class="n">etaSigma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">etaGF</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">jp</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">calcr_trans</span><span class="p">,</span> <span class="n">savefile</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JunPy version---------------------------: 0.15.0.post29+ga5b3260
+Parallelization information
+    BLAS Vendor-----------------------------: MKL
+    Total number of MPI processes-----------: 1
+    OMP_NUM_THREADS-------------------------: 1
+    MKL_NUM_THREADS-------------------------: unset
+    OPENBLAS_NUM_THREADS--------------------: unset
+Calculating transmission... (2024-08-15 20:26:28)
+    Device information
+        bias (mu2-mu1)--------------------------: 0.0
+        central.numberOfSites-------------------: 12
+        central.spinType------------------------: SpinType.CollinearSpin
+        lead1.numberOfSites---------------------: 3
+        lead1.spinType--------------------------: SpinType.CollinearSpin
+        lead1.direction-------------------------: -3
+        lead1.temperature-----------------------: 0.0
+        lead1.chemicalPotential-----------------: -0.0
+        lead2.numberOfSites---------------------: 3
+        lead2.spinType--------------------------: SpinType.CollinearSpin
+        lead2.direction-------------------------: -3
+        lead2.temperature-----------------------: 0.0
+        lead2.chemicalPotential-----------------: -0.0
+    Energy sampling
+        samplingName----------------------------: CustomSampling
+        range-----------------------------------: [-4.0000e+00, 6.0000e+00]
+        number----------------------------------: 101
+    K-space sampling
+        samplingName----------------------------: GammaKspaceSampling
+        numReducedKpoints-----------------------: 1
+    Runtime message
+        Integrate over energy and k-space...
+            Start MPI execution...
+            --&gt;   5.9% finished (Elapsed time: 0:00:00.179570)
+            --&gt;  10.9% finished (Elapsed time: 0:00:00.124961)
+            --&gt;  15.8% finished (Elapsed time: 0:00:00.124341)
+            --&gt;  20.8% finished (Elapsed time: 0:00:00.130004)
+            --&gt;  25.7% finished (Elapsed time: 0:00:00.146647)
+            --&gt;  30.7% finished (Elapsed time: 0:00:00.173420)
+            --&gt;  35.6% finished (Elapsed time: 0:00:00.187555)
+            --&gt;  40.6% finished (Elapsed time: 0:00:00.211225)
+            --&gt;  45.5% finished (Elapsed time: 0:00:00.197474)
+            --&gt;  50.5% finished (Elapsed time: 0:00:00.187446)
+            --&gt;  55.4% finished (Elapsed time: 0:00:00.221113)
+            --&gt;  60.4% finished (Elapsed time: 0:00:00.199818)
+            --&gt;  65.3% finished (Elapsed time: 0:00:00.212808)
+            --&gt;  70.3% finished (Elapsed time: 0:00:00.179722)
+            --&gt;  75.2% finished (Elapsed time: 0:00:00.185184)
+            --&gt;  80.2% finished (Elapsed time: 0:00:00.186060)
+            --&gt;  85.1% finished (Elapsed time: 0:00:00.144540)
+            --&gt;  90.1% finished (Elapsed time: 0:00:00.171482)
+            --&gt;  95.0% finished (Elapsed time: 0:00:00.173372)
+            --&gt; 100.0% finished (Elapsed time: 0:00:00.136908)
+            Wait for other processes...
+            --&gt; finished (Elapsed time: 0:00:00.000013)
+            Gather results from other processes...
+            --&gt; finished (Elapsed time: 0:00:00.000059)
+    Transmission report
+            Energy_eV          T_up          T_dn
+        -4.000000e+00  3.568769e-25  1.086498e-23
+        -3.900000e+00  5.493207e-25  5.768998e-24
+        -3.800000e+00  9.184429e-25  3.357583e-24
+        -3.700000e+00  1.655759e-24  2.125167e-24
+        -3.600000e+00  3.193358e-24  1.452455e-24
+        -3.500000e+00  6.549973e-24  1.064571e-24
+        -3.400000e+00  1.424297e-23  8.311436e-25
+        -3.300000e+00  3.281372e-23  6.867108e-25
+        -3.200000e+00  8.020403e-23  5.968460e-25
+        -3.100000e+00  2.085829e-22  5.428753e-25
+        -3.000000e+00  5.795699e-22  5.146546e-25
+        -2.900000e+00  1.729808e-21  5.070578e-25
+        -2.800000e+00  5.582701e-21  5.183081e-25
+        -2.700000e+00  1.964410e-20  5.493327e-25
+        -2.600000e+00  7.614856e-20  6.038201e-25
+        -2.500000e+00  3.295224e-19  6.889433e-25
+        -2.400000e+00  1.619688e-18  8.169458e-25
+        -2.300000e+00  9.256830e-18  1.008095e-24
+        -2.200000e+00  6.356741e-17  1.296021e-24
+        -2.100000e+00  5.505632e-16  1.737447e-24
+        -2.000000e+00  6.495195e-15  2.430272e-24
+        -1.900000e+00  1.195445e-13  3.548076e-24
+        -1.800000e+00  4.565681e-12  5.407865e-24
+        -1.700000e+00  8.546694e-10  8.607290e-24
+        -1.600000e+00  1.911524e-04  1.431190e-23
+        -1.500000e+00  9.459319e-04  2.487799e-23
+        -1.400000e+00  1.860142e-03  4.525445e-23
+        -1.300000e+00  2.543458e-03  8.626567e-23
+        -1.200000e+00  2.878037e-03  1.726329e-22
+        -1.100000e+00  3.211477e-03  3.634836e-22
+        -1.000000e+00  3.744801e-03  8.074156e-22
+        -9.000000e-01  4.089340e-03  1.898336e-21
+        -8.000000e-01  5.569328e-03  4.742493e-21
+        -7.000000e-01  6.286368e-03  1.264843e-20
+        -6.000000e-01  6.752022e-03  3.621892e-20
+        -5.000000e-01  7.122807e-03  1.121337e-19
+        -4.000000e-01  7.547907e-03  3.786295e-19
+        -3.000000e-01  8.212986e-03  1.409789e-18
+        -2.000000e-01  9.534190e-03  5.871544e-18
+        -1.000000e-01  1.160203e-02  2.787783e-17
+         0.000000e+00  1.573092e-02  1.548968e-16
+         1.000000e-01  1.162909e-02  1.045907e-15
+         2.000000e-01  1.138167e-02  9.093653e-15
+         3.000000e-01  1.119427e-02  1.121634e-13
+         4.000000e-01  1.101313e-02  2.364180e-12
+         5.000000e-01  1.099336e-02  1.348291e-10
+         6.000000e-01  1.222977e-02  1.981699e-07
+         7.000000e-01  1.156938e-02  6.432205e-04
+         8.000000e-01  1.052950e-02  1.568219e-03
+         9.000000e-01  8.555938e-03  2.749335e-03
+         1.000000e+00  6.310701e-03  3.488483e-03
+         1.100000e+00  4.503891e-03  3.841601e-03
+         1.200000e+00  3.148973e-03  4.278159e-03
+         1.300000e+00  1.613886e-03  5.030354e-03
+         1.400000e+00  1.236328e-04  6.035115e-03
+         1.500000e+00  3.319599e-09  7.614844e-03
+         1.600000e+00  3.358661e-11  8.073908e-03
+         1.700000e+00  1.430975e-12  8.136489e-03
+         1.800000e+00  1.171936e-13  7.877373e-03
+         1.900000e+00  1.427212e-14  7.692115e-03
+         2.000000e+00  2.287498e-15  7.897747e-03
+         2.100000e+00  4.501481e-16  8.721847e-03
+         2.200000e+00  1.040753e-16  1.039420e-02
+         2.300000e+00  2.743403e-17  1.311429e-02
+         2.400000e+00  8.068509e-18  1.672900e-02
+         2.500000e+00  2.605106e-18  2.053977e-02
+         2.600000e+00  9.118984e-19  2.325163e-02
+         2.700000e+00  3.426417e-19  2.532241e-02
+         2.800000e+00  1.370907e-19  1.807458e-02
+         2.900000e+00  5.801814e-20  1.464895e-02
+         3.000000e+00  2.582793e-20  1.282680e-02
+         3.100000e+00  1.203745e-20  1.179520e-02
+         3.200000e+00  5.849759e-21  1.121240e-02
+         3.300000e+00  2.953763e-21  1.189348e-02
+         3.400000e+00  1.544954e-21  1.146806e-02
+         3.500000e+00  8.348074e-22  1.034134e-02
+         3.600000e+00  4.648907e-22  8.438088e-03
+         3.700000e+00  2.662484e-22  6.396584e-03
+         3.800000e+00  1.565206e-22  4.789009e-03
+         3.900000e+00  9.429024e-23  3.695378e-03
+         4.000000e+00  5.811813e-23  2.732662e-03
+         4.100000e+00  3.660265e-23  1.232044e-03
+         4.200000e+00  2.352538e-23  3.872268e-05
+         4.300000e+00  1.541371e-23  2.962225e-09
+         4.400000e+00  1.028486e-23  5.969100e-11
+         4.500000e+00  6.982854e-24  3.774545e-12
+         4.600000e+00  4.820343e-24  4.137508e-13
+         4.700000e+00  3.380984e-24  6.380405e-14
+         4.800000e+00  2.408125e-24  1.249691e-14
+         4.900000e+00  1.740903e-24  2.930559e-15
+         5.000000e+00  1.276899e-24  7.922661e-16
+         5.100000e+00  9.499194e-25  2.405968e-16
+         5.200000e+00  7.165752e-25  8.054888e-17
+         5.300000e+00  5.480379e-25  2.931281e-17
+         5.400000e+00  4.249060e-25  1.146937e-17
+         5.500000e+00  3.339619e-25  4.783388e-18
+         5.600000e+00  2.660954e-25  2.111488e-18
+         5.700000e+00  2.149573e-25  9.807882e-19
+         5.800000e+00  1.760756e-25  4.770711e-19
+         5.900000e+00  1.462689e-25  2.420031e-19
+         6.000000e+00  1.232526e-25  1.275714e-19
+Calculation of transmission finished (2024-08-15 20:26:32)
+Elapsed time----------------------------: 0:00:03.504264
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>After the evaluation, the transmission values are retrieved using <code class="docutils literal notranslate"><span class="pre">[calcr].transmission</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shape: (#kpoints, #energies, #spin)</span>
+<span class="n">trans</span> <span class="o">=</span> <span class="n">calcr_trans</span><span class="o">.</span><span class="n">transmission</span><span class="p">(</span><span class="n">spin</span><span class="o">=</span><span class="s1">&#39;diag&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">calcr_trans</span><span class="o">.</span><span class="n">energies</span><span class="p">,</span> <span class="n">trans</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spin-up&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">calcr_trans</span><span class="o">.</span><span class="n">energies</span><span class="p">,</span> <span class="n">trans</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spin-down&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Energy (eV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Transmission&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../../_images/666d30023e3eebab5940c574bac9760ce47ba3c26bca874c04094d7749f4ae95.svg" src="../../../../../../_images/666d30023e3eebab5940c574bac9760ce47ba3c26bca874c04094d7749f4ae95.svg" />
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, tangtang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

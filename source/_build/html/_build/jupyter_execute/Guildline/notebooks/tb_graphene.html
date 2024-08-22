@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graphene &mdash; JunPy Webside 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            JunPy Webside
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guildlines:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Guildline/1_Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Guildline/2_Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Guildline/3_Example.html">Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Guildline/4_InputReference.html">Input reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Appendix/5_Theorem.html">Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Appendix/6_ContactUs.html">Contact us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Appendix/7_Forum.html">Forum</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">JunPy Webside</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Graphene</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/_build/jupyter_execute/Guildline/notebooks/tb_graphene.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="graphene">
+<h1>Graphene<a class="headerlink" href="#graphene" title="Link to this heading"></a></h1>
+<section id="import-necessary-libraries">
+<h2>Import Necessary Libraries<a class="headerlink" href="#import-necessary-libraries" title="Link to this heading"></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">junpy</span> <span class="k">as</span> <span class="nn">jp</span>
+<span class="kn">from</span> <span class="nn">junpy.factory</span> <span class="kn">import</span> <span class="n">tightbinding</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_formats = [&#39;svg&#39;]
+<span class="o">%</span><span class="k">config</span> InlineBackend.rc = {&#39;font.size&#39;: 12}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="build-device">
+<h2>Build Device<a class="headerlink" href="#build-device" title="Link to this heading"></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mf">2.8</span>
+<span class="n">e0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">0</span>
+<span class="n">sin30</span><span class="p">,</span> <span class="n">cos30</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="c1"># define positions and lattice vectors</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="mf">1.42</span>  <span class="c1"># [ang] carbon-carbon distance</span>
+<span class="n">a1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">acc</span><span class="o">*</span><span class="n">cos30</span><span class="p">,</span>               <span class="mf">0.0</span><span class="p">,</span>     <span class="mf">0.0</span><span class="p">]</span>
+<span class="n">a2</span> <span class="o">=</span> <span class="p">[</span>        <span class="mf">0.0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">acc</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">acc</span><span class="o">*</span><span class="n">sin30</span><span class="p">,</span>     <span class="mf">0.0</span><span class="p">]</span>
+<span class="n">a3</span> <span class="o">=</span> <span class="p">[</span>        <span class="mf">0.0</span><span class="p">,</span>               <span class="mf">0.0</span><span class="p">,</span>     <span class="mf">0.0</span><span class="p">]</span>
+<span class="n">basis1</span> <span class="o">=</span> <span class="p">[</span>      <span class="mf">0.0</span><span class="p">,</span>                 <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+<span class="n">basis2</span> <span class="o">=</span> <span class="p">[</span><span class="n">acc</span><span class="o">*</span><span class="n">cos30</span><span class="p">,</span> <span class="n">basis1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">acc</span><span class="o">*</span><span class="n">sin30</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+<span class="n">basis3</span> <span class="o">=</span> <span class="p">[</span><span class="n">acc</span><span class="o">*</span><span class="n">cos30</span><span class="p">,</span> <span class="n">basis2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">acc</span>      <span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+<span class="n">basis4</span> <span class="o">=</span> <span class="p">[</span>      <span class="mf">0.0</span><span class="p">,</span> <span class="n">basis3</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">acc</span><span class="o">*</span><span class="n">sin30</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+
+<span class="c1"># create center</span>
+<span class="n">builder</span> <span class="o">=</span> <span class="n">tightbinding</span><span class="o">.</span><span class="n">DeviceBuilder</span><span class="p">([</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">a3</span><span class="p">],</span> <span class="s1">&#39;CollinearSpin&#39;</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">set_translationSymmetry</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_site</span><span class="p">(</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="n">basis1</span><span class="p">,</span> <span class="n">e0</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_site</span><span class="p">(</span><span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="n">basis2</span><span class="p">,</span> <span class="n">e0</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_site</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="n">basis3</span><span class="p">,</span> <span class="n">e0</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_site</span><span class="p">(</span><span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="n">basis4</span><span class="p">,</span> <span class="n">e0</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_hopping</span><span class="p">(</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;s2&#39;</span><span class="p">),</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_hopping</span><span class="p">(</span><span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;s3&#39;</span><span class="p">),</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_hopping</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;s4&#39;</span><span class="p">),</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_hopping</span><span class="p">(</span><span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;s1&#39;</span><span class="p">),</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># create lead</span>
+<span class="n">lead</span> <span class="o">=</span> <span class="n">tightbinding</span><span class="o">.</span><span class="n">DeviceBuilder</span><span class="p">([</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">a3</span><span class="p">],</span> <span class="s1">&#39;CollinearSpin&#39;</span><span class="p">)</span>
+<span class="n">lead</span><span class="o">.</span><span class="n">set_translationSymmetry</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">lead</span><span class="o">.</span><span class="n">add_site</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">,</span> <span class="n">basis1</span><span class="p">,</span> <span class="n">e0</span><span class="p">)</span>
+<span class="n">lead</span><span class="o">.</span><span class="n">add_site</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">,</span> <span class="n">basis2</span><span class="p">,</span> <span class="n">e0</span><span class="p">)</span>
+<span class="n">lead</span><span class="o">.</span><span class="n">add_site</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">,</span> <span class="n">basis3</span><span class="p">,</span> <span class="n">e0</span><span class="p">)</span>
+<span class="n">lead</span><span class="o">.</span><span class="n">add_site</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">,</span> <span class="n">basis4</span><span class="p">,</span> <span class="n">e0</span><span class="p">)</span>
+<span class="n">lead</span><span class="o">.</span><span class="n">add_hopping</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;f2&#39;</span><span class="p">),</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+<span class="n">lead</span><span class="o">.</span><span class="n">add_hopping</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;f3&#39;</span><span class="p">),</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+<span class="n">lead</span><span class="o">.</span><span class="n">add_hopping</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;f4&#39;</span><span class="p">),</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+<span class="n">lead</span><span class="o">.</span><span class="n">add_hopping</span><span class="p">(</span><span class="s1">&#39;f4&#39;</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;f1&#39;</span><span class="p">),</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+<span class="n">lead</span><span class="o">.</span><span class="n">add_hopping</span><span class="p">(</span><span class="s1">&#39;f2&#39;</span><span class="p">,</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;f1&#39;</span><span class="p">),</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+<span class="n">lead</span><span class="o">.</span><span class="n">add_hopping</span><span class="p">(</span><span class="s1">&#39;f3&#39;</span><span class="p">,</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;f4&#39;</span><span class="p">),</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># attach left lead</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">attach_lead</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">lead</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_lead_coupling</span><span class="p">(</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;f2&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_lead_coupling</span><span class="p">(</span><span class="s1">&#39;s4&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;f3&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># attach right lead</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">attach_lead</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">lead</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_lead_coupling</span><span class="p">(</span><span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;f1&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_lead_coupling</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;f4&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">create_device</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-density-of-states">
+<h2>Calculate Density of States<a class="headerlink" href="#calculate-density-of-states" title="Link to this heading"></a></h2>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calcr_dos</span> <span class="o">=</span> <span class="n">jp</span><span class="o">.</span><span class="n">DensityOfStates</span><span class="p">(</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">energies</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">101</span><span class="p">),</span>
+    <span class="n">kpoints</span><span class="o">=</span><span class="n">jp</span><span class="o">.</span><span class="n">SymmetryKspaceSampling</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span>
+    <span class="n">etaSigma</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">jp</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">calcr_dos</span><span class="p">,</span> <span class="n">savefile</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JunPy version---------------------------: 0.15.0.post29+ga5b3260
+Parallelization information
+    BLAS Vendor-----------------------------: MKL
+    Total number of MPI processes-----------: 1
+    OMP_NUM_THREADS-------------------------: 1
+    MKL_NUM_THREADS-------------------------: unset
+    OPENBLAS_NUM_THREADS--------------------: unset
+Calculating density of states... (2024-08-14 21:12:39)
+    Device information
+        bias (mu2-mu1)--------------------------: 0
+        central.numberOfSites-------------------: 4
+        central.spinType------------------------: SpinType.CollinearSpin
+        lead1.numberOfSites---------------------: 4
+        lead1.spinType--------------------------: SpinType.CollinearSpin
+        lead1.direction-------------------------: -1
+        lead1.temperature-----------------------: 0
+        lead1.chemicalPotential-----------------: 0
+        lead2.numberOfSites---------------------: 4
+        lead2.spinType--------------------------: SpinType.CollinearSpin
+        lead2.direction-------------------------: 1
+        lead2.temperature-----------------------: 0
+        lead2.chemicalPotential-----------------: 0
+    Energy sampling
+        samplingName----------------------------: CustomSampling
+        range-----------------------------------: [-1.0000e+01, 1.0000e+01]
+        number----------------------------------: 101
+    K-space sampling
+        samplingName----------------------------: SymmetryKspaceSampling
+        gridNumber------------------------------: (1, 101, 1)
+        isTimeReversalSymmetry------------------: True
+        numReducedKpoints-----------------------: 51
+    Runtime message
+        Integrate over energy and k-space...
+            Start MPI execution...
+            --&gt;   5.0% finished (Elapsed time: 0:00:00.084201)
+            --&gt;  10.0% finished (Elapsed time: 0:00:00.073568)
+            --&gt;  15.0% finished (Elapsed time: 0:00:00.075505)
+            --&gt;  20.0% finished (Elapsed time: 0:00:00.156256)
+            --&gt;  25.0% finished (Elapsed time: 0:00:00.081766)
+            --&gt;  30.1% finished (Elapsed time: 0:00:00.076312)
+            --&gt;  35.1% finished (Elapsed time: 0:00:00.074301)
+            --&gt;  40.1% finished (Elapsed time: 0:00:00.111911)
+            --&gt;  45.1% finished (Elapsed time: 0:00:00.151769)
+            --&gt;  50.1% finished (Elapsed time: 0:00:00.086104)
+            --&gt;  55.1% finished (Elapsed time: 0:00:00.073415)
+            --&gt;  60.1% finished (Elapsed time: 0:00:00.073363)
+            --&gt;  65.1% finished (Elapsed time: 0:00:00.071591)
+            --&gt;  70.1% finished (Elapsed time: 0:00:00.062680)
+            --&gt;  75.1% finished (Elapsed time: 0:00:00.064618)
+            --&gt;  80.0% finished (Elapsed time: 0:00:00.061974)
+            --&gt;  85.0% finished (Elapsed time: 0:00:00.060728)
+            --&gt;  90.0% finished (Elapsed time: 0:00:00.061119)
+            --&gt;  95.0% finished (Elapsed time: 0:00:00.061169)
+            --&gt; 100.0% finished (Elapsed time: 0:00:00.063473)
+            Wait for other processes...
+            --&gt; finished (Elapsed time: 0:00:00.000371)
+            Gather results from other processes...
+            --&gt; finished (Elapsed time: 0:00:00.000124)
+    Density of states report
+            Energy_eV          D_up          D_dn
+        -1.000000e+01  3.291403e-04  3.291403e-04
+        -9.800000e+00  4.164492e-04  4.164492e-04
+        -9.600000e+00  5.426681e-04  5.426681e-04
+        -9.400000e+00  7.355536e-04  7.355536e-04
+        -9.200000e+00  1.054106e-03  1.054106e-03
+        -9.000000e+00  1.645468e-03  1.645468e-03
+        -8.800000e+00  2.984834e-03  2.984834e-03
+        -8.600000e+00  7.636589e-03  7.636589e-03
+        -8.400000e+00  8.498029e-02  8.498029e-02
+        -8.200000e+00  1.874761e-01  1.874761e-01
+        -8.000000e+00  1.976369e-01  1.976369e-01
+        -7.800000e+00  2.025036e-01  2.025036e-01
+        -7.600000e+00  2.062524e-01  2.062524e-01
+        -7.400000e+00  2.093916e-01  2.093916e-01
+        -7.200000e+00  2.129190e-01  2.129190e-01
+        -7.000000e+00  2.161736e-01  2.161736e-01
+        -6.800000e+00  2.196013e-01  2.196013e-01
+        -6.600000e+00  2.229148e-01  2.229148e-01
+        -6.400000e+00  2.258464e-01  2.258464e-01
+        -6.200000e+00  2.305559e-01  2.305559e-01
+        -6.000000e+00  2.337549e-01  2.337549e-01
+        -5.800000e+00  2.391985e-01  2.391985e-01
+        -5.600000e+00  2.426796e-01  2.426796e-01
+        -5.400000e+00  2.485594e-01  2.485594e-01
+        -5.200000e+00  2.543886e-01  2.543886e-01
+        -5.000000e+00  2.592638e-01  2.592638e-01
+        -4.800000e+00  2.664476e-01  2.664476e-01
+        -4.600000e+00  2.747976e-01  2.747976e-01
+        -4.400000e+00  2.821788e-01  2.821788e-01
+        -4.200000e+00  2.920680e-01  2.920680e-01
+        -4.000000e+00  3.044264e-01  3.044264e-01
+        -3.800000e+00  3.174907e-01  3.174907e-01
+        -3.600000e+00  3.359825e-01  3.359825e-01
+        -3.400000e+00  3.601033e-01  3.601033e-01
+        -3.200000e+00  3.955914e-01  3.955914e-01
+        -3.000000e+00  4.602534e-01  4.602534e-01
+        -2.800000e+00  6.115552e-01  6.115552e-01
+        -2.600000e+00  4.226718e-01  4.226718e-01
+        -2.400000e+00  3.337498e-01  3.337498e-01
+        -2.200000e+00  2.775455e-01  2.775455e-01
+        -2.000000e+00  2.350039e-01  2.350039e-01
+        -1.800000e+00  2.005939e-01  2.005939e-01
+        -1.600000e+00  1.707576e-01  1.707576e-01
+        -1.400000e+00  1.445990e-01  1.445990e-01
+        -1.200000e+00  1.214273e-01  1.214273e-01
+        -1.000000e+00  9.869692e-02  9.869692e-02
+        -8.000000e-01  7.878788e-02  7.878788e-02
+        -6.000000e-01  5.931759e-02  5.931759e-02
+        -4.000000e-01  4.053670e-02  4.053670e-02
+        -2.000000e-01  2.391836e-02  2.391836e-02
+         0.000000e+00  1.226242e-02  1.226242e-02
+         2.000000e-01  2.391836e-02  2.391836e-02
+         4.000000e-01  4.053670e-02  4.053670e-02
+         6.000000e-01  5.931759e-02  5.931759e-02
+         8.000000e-01  7.878788e-02  7.878788e-02
+         1.000000e+00  9.869692e-02  9.869692e-02
+         1.200000e+00  1.214273e-01  1.214273e-01
+         1.400000e+00  1.445990e-01  1.445990e-01
+         1.600000e+00  1.707576e-01  1.707576e-01
+         1.800000e+00  2.005939e-01  2.005939e-01
+         2.000000e+00  2.350039e-01  2.350039e-01
+         2.200000e+00  2.775455e-01  2.775455e-01
+         2.400000e+00  3.337498e-01  3.337498e-01
+         2.600000e+00  4.226718e-01  4.226718e-01
+         2.800000e+00  6.115552e-01  6.115552e-01
+         3.000000e+00  4.602534e-01  4.602534e-01
+         3.200000e+00  3.955914e-01  3.955914e-01
+         3.400000e+00  3.601033e-01  3.601033e-01
+         3.600000e+00  3.359825e-01  3.359825e-01
+         3.800000e+00  3.174907e-01  3.174907e-01
+         4.000000e+00  3.044264e-01  3.044264e-01
+         4.200000e+00  2.920680e-01  2.920680e-01
+         4.400000e+00  2.821788e-01  2.821788e-01
+         4.600000e+00  2.747976e-01  2.747976e-01
+         4.800000e+00  2.664476e-01  2.664476e-01
+         5.000000e+00  2.592638e-01  2.592638e-01
+         5.200000e+00  2.543886e-01  2.543886e-01
+         5.400000e+00  2.485594e-01  2.485594e-01
+         5.600000e+00  2.426796e-01  2.426796e-01
+         5.800000e+00  2.391985e-01  2.391985e-01
+         6.000000e+00  2.337549e-01  2.337549e-01
+         6.200000e+00  2.305559e-01  2.305559e-01
+         6.400000e+00  2.258464e-01  2.258464e-01
+         6.600000e+00  2.229148e-01  2.229148e-01
+         6.800000e+00  2.196013e-01  2.196013e-01
+         7.000000e+00  2.161736e-01  2.161736e-01
+         7.200000e+00  2.129190e-01  2.129190e-01
+         7.400000e+00  2.093916e-01  2.093916e-01
+         7.600000e+00  2.062524e-01  2.062524e-01
+         7.800000e+00  2.025036e-01  2.025036e-01
+         8.000000e+00  1.976369e-01  1.976369e-01
+         8.200000e+00  1.874761e-01  1.874761e-01
+         8.400000e+00  8.498029e-02  8.498029e-02
+         8.600000e+00  7.636589e-03  7.636589e-03
+         8.800000e+00  2.984834e-03  2.984834e-03
+         9.000000e+00  1.645468e-03  1.645468e-03
+         9.200000e+00  1.054106e-03  1.054106e-03
+         9.400000e+00  7.355536e-04  7.355536e-04
+         9.600000e+00  5.426681e-04  5.426681e-04
+         9.800000e+00  4.164492e-04  4.164492e-04
+         1.000000e+01  3.291403e-04  3.291403e-04
+Calculation of density of states finished (2024-08-14 21:12:41)
+Elapsed time----------------------------: 0:00:01.724063
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shape: (#kpoints, #energies, #spin)</span>
+<span class="n">dos</span> <span class="o">=</span> <span class="n">calcr_dos</span><span class="o">.</span><span class="n">densityOfStates</span><span class="p">(</span><span class="n">spin</span><span class="o">=</span><span class="s1">&#39;diag&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">calcr_dos</span><span class="o">.</span><span class="n">energies</span><span class="p">,</span>  <span class="n">dos</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spin-up&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">calcr_dos</span><span class="o">.</span><span class="n">energies</span><span class="p">,</span> <span class="o">-</span><span class="n">dos</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spin-down&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Energy (eV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;DOS (1/eV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/23a790b544e97060598130000e4a2584bfeae7be589ff880675062dd0c5a9f44.svg" src="../../../../_images/23a790b544e97060598130000e4a2584bfeae7be589ff880675062dd0c5a9f44.svg" />
+</div>
+</div>
+</section>
+<section id="calculate-transmission">
+<h2>Calculate Transmission<a class="headerlink" href="#calculate-transmission" title="Link to this heading"></a></h2>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calcr_trans</span> <span class="o">=</span> <span class="n">jp</span><span class="o">.</span><span class="n">Transmission</span><span class="p">(</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">energies</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">101</span><span class="p">),</span>
+    <span class="n">kpoints</span><span class="o">=</span><span class="n">jp</span><span class="o">.</span><span class="n">SymmetryKspaceSampling</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span>
+    <span class="n">etaSigma</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+<span class="n">jp</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">calcr_trans</span><span class="p">,</span> <span class="n">savefile</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>JunPy version---------------------------: 0.15.0.post29+ga5b3260
+Parallelization information
+    BLAS Vendor-----------------------------: MKL
+    Total number of MPI processes-----------: 1
+    OMP_NUM_THREADS-------------------------: 1
+    MKL_NUM_THREADS-------------------------: unset
+    OPENBLAS_NUM_THREADS--------------------: unset
+Calculating transmission... (2024-08-14 21:12:59)
+    Device information
+        bias (mu2-mu1)--------------------------: 0
+        central.numberOfSites-------------------: 4
+        central.spinType------------------------: SpinType.CollinearSpin
+        lead1.numberOfSites---------------------: 4
+        lead1.spinType--------------------------: SpinType.CollinearSpin
+        lead1.direction-------------------------: -1
+        lead1.temperature-----------------------: 0
+        lead1.chemicalPotential-----------------: 0
+        lead2.numberOfSites---------------------: 4
+        lead2.spinType--------------------------: SpinType.CollinearSpin
+        lead2.direction-------------------------: 1
+        lead2.temperature-----------------------: 0
+        lead2.chemicalPotential-----------------: 0
+    Energy sampling
+        samplingName----------------------------: CustomSampling
+        range-----------------------------------: [-1.0000e+01, 1.0000e+01]
+        number----------------------------------: 101
+    K-space sampling
+        samplingName----------------------------: SymmetryKspaceSampling
+        gridNumber------------------------------: (1, 101, 1)
+        isTimeReversalSymmetry------------------: True
+        numReducedKpoints-----------------------: 51
+    Runtime message
+        Integrate over energy and k-space...
+            Start MPI execution...
+            --&gt;   5.0% finished (Elapsed time: 0:00:00.115570)
+            --&gt;  10.0% finished (Elapsed time: 0:00:00.104016)
+            --&gt;  15.0% finished (Elapsed time: 0:00:00.107157)
+            --&gt;  20.0% finished (Elapsed time: 0:00:00.114073)
+            --&gt;  25.0% finished (Elapsed time: 0:00:00.098242)
+            --&gt;  30.1% finished (Elapsed time: 0:00:00.111357)
+            --&gt;  35.1% finished (Elapsed time: 0:00:00.137567)
+            --&gt;  40.1% finished (Elapsed time: 0:00:00.104809)
+            --&gt;  45.1% finished (Elapsed time: 0:00:00.103372)
+            --&gt;  50.1% finished (Elapsed time: 0:00:00.096345)
+            --&gt;  55.1% finished (Elapsed time: 0:00:00.092898)
+            --&gt;  60.1% finished (Elapsed time: 0:00:00.094230)
+            --&gt;  65.1% finished (Elapsed time: 0:00:00.093037)
+            --&gt;  70.1% finished (Elapsed time: 0:00:00.089029)
+            --&gt;  75.1% finished (Elapsed time: 0:00:00.080536)
+            --&gt;  80.0% finished (Elapsed time: 0:00:00.081135)
+            --&gt;  85.0% finished (Elapsed time: 0:00:00.076078)
+            --&gt;  90.0% finished (Elapsed time: 0:00:00.075297)
+            --&gt;  95.0% finished (Elapsed time: 0:00:00.073152)
+            --&gt; 100.0% finished (Elapsed time: 0:00:00.071861)
+            Wait for other processes...
+            --&gt; finished (Elapsed time: 0:00:00.000011)
+            Gather results from other processes...
+            --&gt; finished (Elapsed time: 0:00:00.000045)
+    Transmission report
+            Energy_eV          T_up          T_dn
+        -1.000000e+01  1.594008e-11  1.594008e-11
+        -9.800000e+00  2.464248e-11  2.464248e-11
+        -9.600000e+00  4.001839e-11  4.001839e-11
+        -9.400000e+00  6.936611e-11  6.936611e-11
+        -9.200000e+00  1.317261e-10  1.317261e-10
+        -9.000000e+00  2.873895e-10  2.873895e-10
+        -8.800000e+00  7.986638e-10  7.986638e-10
+        -8.600000e+00  3.875380e-09  3.875380e-09
+        -8.400000e+00  4.968976e-03  4.968976e-03
+        -8.200000e+00  2.871404e-01  2.871404e-01
+        -8.000000e+00  4.257414e-01  4.257414e-01
+        -7.800000e+00  5.246634e-01  5.246634e-01
+        -7.600000e+00  6.039594e-01  6.039594e-01
+        -7.400000e+00  6.633666e-01  6.633666e-01
+        -7.200000e+00  7.425738e-01  7.425738e-01
+        -7.000000e+00  8.019801e-01  8.019801e-01
+        -6.800000e+00  8.613859e-01  8.613859e-01
+        -6.600000e+00  9.207549e-01  9.207549e-01
+        -6.400000e+00  9.603961e-01  9.603961e-01
+        -6.200000e+00  1.019802e+00  1.019802e+00
+        -6.000000e+00  1.059406e+00  1.059406e+00
+        -5.800000e+00  1.118812e+00  1.118812e+00
+        -5.600000e+00  1.158416e+00  1.158416e+00
+        -5.400000e+00  1.198031e+00  1.198031e+00
+        -5.200000e+00  1.257426e+00  1.257426e+00
+        -5.000000e+00  1.297030e+00  1.297030e+00
+        -4.800000e+00  1.336634e+00  1.336634e+00
+        -4.600000e+00  1.396039e+00  1.396039e+00
+        -4.400000e+00  1.435644e+00  1.435644e+00
+        -4.200000e+00  1.475248e+00  1.475248e+00
+        -4.000000e+00  1.534653e+00  1.534653e+00
+        -3.800000e+00  1.574258e+00  1.574258e+00
+        -3.600000e+00  1.633663e+00  1.633663e+00
+        -3.400000e+00  1.693069e+00  1.693069e+00
+        -3.200000e+00  1.752475e+00  1.752475e+00
+        -3.000000e+00  1.831683e+00  1.831683e+00
+        -2.800000e+00  1.994174e+00  1.994174e+00
+        -2.600000e+00  1.524751e+00  1.524751e+00
+        -2.400000e+00  1.326728e+00  1.326728e+00
+        -2.200000e+00  1.168307e+00  1.168307e+00
+        -2.000000e+00  1.009901e+00  1.009901e+00
+        -1.800000e+00  8.910891e-01  8.910891e-01
+        -1.600000e+00  7.722772e-01  7.722772e-01
+        -1.400000e+00  6.534659e-01  6.534659e-01
+        -1.200000e+00  5.742572e-01  5.742572e-01
+        -1.000000e+00  4.554457e-01  4.554457e-01
+        -8.000000e-01  3.762375e-01  3.762375e-01
+        -6.000000e-01  2.574297e-01  2.574297e-01
+        -4.000000e-01  1.782179e-01  1.782179e-01
+        -2.000000e-01  9.900981e-02  9.900981e-02
+         0.000000e+00  1.980205e-02  1.980205e-02
+         2.000000e-01  9.900981e-02  9.900981e-02
+         4.000000e-01  1.782179e-01  1.782179e-01
+         6.000000e-01  2.574297e-01  2.574297e-01
+         8.000000e-01  3.762375e-01  3.762375e-01
+         1.000000e+00  4.554457e-01  4.554457e-01
+         1.200000e+00  5.742572e-01  5.742572e-01
+         1.400000e+00  6.534659e-01  6.534659e-01
+         1.600000e+00  7.722772e-01  7.722772e-01
+         1.800000e+00  8.910891e-01  8.910891e-01
+         2.000000e+00  1.009901e+00  1.009901e+00
+         2.200000e+00  1.168307e+00  1.168307e+00
+         2.400000e+00  1.326728e+00  1.326728e+00
+         2.600000e+00  1.524751e+00  1.524751e+00
+         2.800000e+00  1.994174e+00  1.994174e+00
+         3.000000e+00  1.831683e+00  1.831683e+00
+         3.200000e+00  1.752475e+00  1.752475e+00
+         3.400000e+00  1.693069e+00  1.693069e+00
+         3.600000e+00  1.633663e+00  1.633663e+00
+         3.800000e+00  1.574258e+00  1.574258e+00
+         4.000000e+00  1.534653e+00  1.534653e+00
+         4.200000e+00  1.475248e+00  1.475248e+00
+         4.400000e+00  1.435644e+00  1.435644e+00
+         4.600000e+00  1.396039e+00  1.396039e+00
+         4.800000e+00  1.336634e+00  1.336634e+00
+         5.000000e+00  1.297030e+00  1.297030e+00
+         5.200000e+00  1.257426e+00  1.257426e+00
+         5.400000e+00  1.198031e+00  1.198031e+00
+         5.600000e+00  1.158416e+00  1.158416e+00
+         5.800000e+00  1.118812e+00  1.118812e+00
+         6.000000e+00  1.059406e+00  1.059406e+00
+         6.200000e+00  1.019802e+00  1.019802e+00
+         6.400000e+00  9.603961e-01  9.603961e-01
+         6.600000e+00  9.207549e-01  9.207549e-01
+         6.800000e+00  8.613859e-01  8.613859e-01
+         7.000000e+00  8.019801e-01  8.019801e-01
+         7.200000e+00  7.425738e-01  7.425738e-01
+         7.400000e+00  6.633666e-01  6.633666e-01
+         7.600000e+00  6.039594e-01  6.039594e-01
+         7.800000e+00  5.246634e-01  5.246634e-01
+         8.000000e+00  4.257414e-01  4.257414e-01
+         8.200000e+00  2.871404e-01  2.871404e-01
+         8.400000e+00  4.968976e-03  4.968976e-03
+         8.600000e+00  3.875380e-09  3.875380e-09
+         8.800000e+00  7.986638e-10  7.986638e-10
+         9.000000e+00  2.873895e-10  2.873895e-10
+         9.200000e+00  1.317261e-10  1.317261e-10
+         9.400000e+00  6.936611e-11  6.936611e-11
+         9.600000e+00  4.001839e-11  4.001839e-11
+         9.800000e+00  2.464248e-11  2.464248e-11
+         1.000000e+01  1.594008e-11  1.594008e-11
+Calculation of transmission finished (2024-08-14 21:13:01)
+Elapsed time----------------------------: 0:00:01.958472
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shape: (#kpoints, #energies, #spin)</span>
+<span class="n">trans</span> <span class="o">=</span> <span class="n">calcr_trans</span><span class="o">.</span><span class="n">transmission</span><span class="p">(</span><span class="n">spin</span><span class="o">=</span><span class="s1">&#39;diag&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">calcr_trans</span><span class="o">.</span><span class="n">energies</span><span class="p">,</span>  <span class="n">trans</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spin-up&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">calcr_trans</span><span class="o">.</span><span class="n">energies</span><span class="p">,</span> <span class="o">-</span><span class="n">trans</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spin-down&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Energy (eV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Transmission&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/55cd7691de10632c166d25407311ff0b66085e580d80fa394f1045fc7ca9afe2.svg" src="../../../../_images/55cd7691de10632c166d25407311ff0b66085e580d80fa394f1045fc7ca9afe2.svg" />
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, tangtang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
