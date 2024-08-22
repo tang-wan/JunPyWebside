@@ -1,20 +1,25 @@
 Installation
 ++++++++++++++
+.. ========================
+.. --------------------------------
+.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Topic 1 in Installation
+.. caution:: 
+   Because JunPy is written by python and C++, 
+   we suggest running Junpy under linux envirement and anaconda will be more convenient to compile
+
+Install for linux
 ========================
 
-Subsection 1-1 in Installation
---------------------------------
+#. Copy Junpy file in to system
+#. Create envirement
+#. export CC=gcc
+#. export CXX=g++
+#. pip install .
 
-Subsubsection 1-1 in Installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Topic 2 in Installation
+
+Install for windows
 ========================
-
-Subsection 2-1 in Installation
---------------------------------
-
-Subsubsection 2-1 in Installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. caution:: 
+   Not sure will do or not

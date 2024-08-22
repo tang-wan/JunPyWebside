@@ -1,20 +1,28 @@
 Tutorial
 ++++++++++++++
+.. ========================
+.. --------------------------------
+.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Topic 1 in Tutorial
-========================
+.. caution:: 
+   You can follow the following steps to learn how to use Junpy step by step.
+   The input file you can go to :doc:`InputReference </Guildline/4_InputReference>` download. 
+   
+   If you want to do the nanodcal of following structure first is also fine. 
+   We will provide input file in :doc:`InputReference </Guildline/4_InputReference>` for others who want to start practicing from Nanodcal.
 
-Subsection 1-1 in Tutorial
---------------------------------
 
-Subsubsection 1-1 in Tutorial
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. toctree::
+   :maxdepth: 2
+   :caption: Nanodcal
 
-Topic 2 in Tutorial
-========================
+   notebooks/nad_cc1.ipynb
+   notebooks/nad_cc2.ipynb
+   notebooks/nad_graphene.ipynb
 
-Subsection 2-1 in Tutorial
---------------------------------
+.. toctree::
+   :maxdepth: 2
+   :caption: Tight-binding (stack module)
 
-Subsubsection 2-1 in Tutorial
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   notebooks/stack_simple.ipynb
+   notebooks/stack_FM_I_FM_MTJ.ipynb
