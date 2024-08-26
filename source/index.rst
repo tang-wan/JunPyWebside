@@ -3,10 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Junpy Webside
+Junpy
 ===========================
-
-.. figure:: /Figure/JunpyIcon.png
 
 Here is the *home* *page* of **Junpy** Webside.
 
@@ -38,23 +36,6 @@ Feature
    * Parallel computing with MPI (using mpi4py)
    * Combine C++ directly
 
-[IGNORE]
----------
-If anyone want to learn more about **Junpy**, you can read the following content.
-
-If you want to use Junpy you can just ``import jumpy as jp`` so that you can use **Junpy** in python as ``jp.[function]``.
-
-Roughly, **Junpy** can calculate following things:
-
-
-
-.. Tip::
-   This package need to use with `nanodcal <https://docs.nanoacademic.com/nanodcal/#>`_. Because it will use the hamitonian which is calculated by nanodcal
-
-.. danger:: 
-   This package is pretty good. Please be careful not to become overly addicted
-
-
 .. In toctree, you can use ":hidden:" to hide the hyperlink in home
 .. toctree::
    :maxdepth: 2
@@ -77,3 +58,19 @@ Roughly, **Junpy** can calculate following things:
    This Webside is still building, and Source codes of JunPy are going to be opened in the future.
    JunPy is still in development and temporarily unavailable in public.
    If you have some ideas and questions, please :doc:`contact us </Appendix/6_ContactUs>`
+
+
+[IGNORE]
+---------
+If anyone want to learn more about **Junpy**, you can read the following content.
+
+If you want to use Junpy you can just ``import jumpy as jp`` so that you can use **Junpy** in python as ``jp.[function]``.
+
+Roughly, **Junpy** can calculate following things:
+
+
+.. Tip::
+   This package need to use with `nanodcal <https://docs.nanoacademic.com/nanodcal/#>`_. Because it will use the hamitonian which is calculated by nanodcal
+
+.. danger:: 
+   This package is pretty good. Please be careful not to become overly addicted
