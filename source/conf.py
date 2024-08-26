@@ -6,13 +6,13 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'JunPy Webside'
+project = ''
 copyright = '2024, tangtang'
 author = 'tangtang'
 
 # -- General configuration ---------------------------------------------------
-release = '0.1'
-version = '0.1.0'
+# release = '0.1'
+# version = '0.1.0'
 
 # -- General configuration
 
@@ -45,6 +45,8 @@ html_static_path = ['_static']
 html_css_files = [
     'custom.css',
 ]
+html_favicon = 'Figure/JunpyIcon2.png'
+html_logo = 'Figure/JunpyIcon.png'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
