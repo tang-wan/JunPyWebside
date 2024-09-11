@@ -5,7 +5,7 @@ Tutorial
 .. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. caution:: 
-   You can follow the following steps to learn how to use Junpy step by step.
+   You can follow the following steps to learn how to use JunPy step by step.
    The input file you can go to :doc:`InputReference </Guildline/4_InputReference>` download. 
    
    If you want to do the nanodcal of following structure first is also fine. 

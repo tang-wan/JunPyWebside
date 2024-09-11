@@ -1,12 +1,12 @@
-.. Junpy Webside documentation master file, created by
+.. JunPy Website documentation master file, created by
    sphinx-quickstart on Wed Jul 24 14:04:00 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Junpy
+JunPy
 ===========================
 
-Here is the *home* *page* of **Junpy** Webside.
+Here is the *home* *page* of **JunPy** Website.
 
 Introduction
 ---------------
@@ -55,18 +55,18 @@ Feature
    Appendix/7_Forum
 
 .. caution:: 
-   This Webside is still building, and Source codes of JunPy are going to be opened in the future.
+   This Website is still building, and Source codes of JunPy are going to be opened in the future.
    JunPy is still in development and temporarily unavailable in public.
    If you have some ideas and questions, please :doc:`contact us </Appendix/6_ContactUs>`
 
 
 [IGNORE]
 ---------
-If anyone want to learn more about **Junpy**, you can read the following content.
+If anyone want to learn more about **JunPy**, you can read the following content.
 
-If you want to use Junpy you can just ``import jumpy as jp`` so that you can use **Junpy** in python as ``jp.[function]``.
+If you want to use JunPy you can just ``import jumpy as jp`` so that you can use **JunPy** in python as ``jp.[function]``.
 
-Roughly, **Junpy** can calculate following things:
+Roughly, **JunPy** can calculate following things:
 
 
 .. Tip::
